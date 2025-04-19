@@ -5,7 +5,7 @@
 
 ### 2.1 数据操作
 
-### 2.1.1 入门
+#### 2.1.1 入门
 
 ```python
 torch.arange()
@@ -18,7 +18,7 @@ torch.randn()
 torch.tensor()
 ```
 
-### 2.1.1 运算符
+#### 2.1.2 运算符
 
 ```python
 x+y,x-y,x * y,x/y,x ** y
@@ -29,13 +29,13 @@ X == Y
 X.sum()
 ```
 
-### 2.1.3 广播机制
+#### 2.1.3 广播机制
 
 ```python
 a + b
 ```
 
-### 2.1.4 索引和切片
+#### 2.1.4 索引和切片
 
 ```python
 X[-1]
@@ -44,7 +44,7 @@ X[1,2] = 9
 X[0:2,:]
 ```
 
-### 2.1.5 节省内存
+#### 2.1.5 节省内存
 
 ```python
 before = id(Y)
@@ -61,7 +61,7 @@ Y += X
 before == id(Y)    
 ```
 
-### 2.1.6 转换为其他python对象
+#### 2.1.6 转换为其他python对象
 
 ```python
 A = X.numpy()
@@ -80,13 +80,11 @@ a, a.item(), float(a), int(a)
 >
 > - 与 **副本（Copy）** 不同，副本会生成一个新的数据，修改副本不会影响原始数据。
 
-
-
-### 2.1.7 小结
+#### 2.1.7 小结
 
 深度学习存储和操作数据的主要接口是张量（n维数组）。它提供了各种功能，包括基本数学运算、广播、索引、切片、内存节省和转换其他Python对象。
 
-### 2.1.8 练习
+#### 2.1.8 练习
 
 1. 运行本节中的代码。将本节中的条件语句`X == Y`更改为`X < Y`或`X > Y`，然后看看你可以得到什么样的张量。
 
@@ -98,11 +96,65 @@ a, a.item(), float(a), int(a)
 
 > [!IMPORTANT]
 >
-> 如果两个张量能够进行传播当且仅当每一个维度中存在一个张量的维度为1或者两个张量的该维度相等。
+> 如果两个张量能够进行传播当且仅当**每一个维度中存在一个张量的维度为1或者两个张量的该维度相等**。
 >
 > 好像不能直接扩展维度。
 >
 > `numpy`中：`np.expand_dims(a,axis=-1)`，表示在a的最后增加一个新的维度。
 >
 > `torch`中：使用reshape来实现。
+
+### 2.2 数据预处理
+
+#### 2.2.1 读取数据集
+
+##### `os`库的相关用法
+
+```python
+os.getcwd()
+os.chdir(path)
+os.listdir(path)
+
+for root, dirs, files in os.walk("c:\\Users\\LX\\Desktop\\学习")
+
+os.path.join()
+
+os.path.abspath()
+
+os.path.isdir()
+os.path.isfile()
+os.path.exists()
+
+st = os.stat("c:\\Users\\LX\\Desktop\\学习\\DP\\note.md")
+
+import stat
+stat.filemode(st.st_mode)
+
+os.chmod(path, mode)
+
+os.mkdir()
+os.makedirs()
+
+os.remove()
+os.redir()
+
+os.getenv()
+os.envrion()
+```
+
+- `__file__`：`__file__` 只有在 **“把 `.py` 文件当成脚本运行”** 时才由解释器自动注入——它保存的就是那个**脚本文件自身的路径**。
+
+  在 `Jupyter / IPython` 交互环境 里并没有真正的 “脚本文件”，每个单元格只是即刻执行的代码块，所以解释器根本不会生成 `__file__` 这个变量。
+
+  <img src="pictures\image-20250419165218390.png" alt="image-20250419165218390" style="zoom: 67%;" />
+
+
+
+#### 2.2.2 处理缺失值
+
+#### 2.2.3 转换为张量格式
+
+#### 2.2.4 小结
+
+#### 2.2.5 练习
 
