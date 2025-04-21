@@ -172,11 +172,28 @@ with open("example.txt", "r") as f:
     
     content = f.readlines()
     
-## with 上下文管理器，完成操作后会自动关掉
+# with 上下文管理器，完成操作后会自动关掉
 ```
 
 - `csv`
   逗号分隔文件
+
+##### pandas库常用方法
+
+```python
+pd.read_csv()
+pd.read_excel() #xlxs文件
+pd.read_sql()
+
+df.head()
+df.tail()
+df.info()
+df.describe()
+df.shape
+
+df.iloc[:,:]
+df.loc[:,["column1","column2"]]
+```
 
 
 
