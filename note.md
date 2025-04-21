@@ -147,6 +147,36 @@ os.envrion()
   在 `Jupyter / IPython` 交互环境 里并没有真正的 “脚本文件”，每个单元格只是即刻执行的代码块，所以解释器根本不会生成 `__file__` 这个变量。
 
   <img src="pictures\image-20250419165218390.png" alt="image-20250419165218390" style="zoom: 67%;" />
+  
+- `os.makedirs(os.path.join("..", "data"), exist_ok=True)`
+  `exist_ok`:如果创建的目录已经存在设置为True就不会报错，如果设置为False就会报错。
+
+##### 文件对象
+
+```python
+f = open("example.txt", "r")
+"r"
+"w"
+"a"
+"b"
+
+lines = ["hello", "world"]
+
+with open("example.txt", "w") as f:
+	f.write("hello world")
+    
+    f.writelines(lines)
+with open("example.txt", "r") as f:
+    
+    content = f.read()
+    
+    content = f.readlines()
+    
+## with 上下文管理器，完成操作后会自动关掉
+```
+
+- `csv`
+  逗号分隔文件
 
 
 
