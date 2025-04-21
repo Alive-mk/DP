@@ -193,13 +193,29 @@ df.shape
 
 df.iloc[:,:]
 df.loc[:,["column1","column2"]]
+
+df.rename(columns={"old_column:new_column"}, inplace=True)
 ```
-
-
 
 #### 2.2.2 处理缺失值
 
+```python
+df.dropna(inplace=True) # 这样才会直接在原来的df上修改
+df.iloc[:,1].fillna(df.iloc[:,1].mean(),inplace=True)
+df["column"] = df["column"].astype(float)
+
+inputs= pd.get_dummies(iputs, dummy_na=True)
+```
+
 #### 2.2.3 转换为张量格式
+
+```python
+import torch
+
+X = torch.tensor(inputs.to_numpy(dtype=float))
+```
+
+<img src="pictures\image-20250421231806080.png" alt="image-20250421231806080" style="zoom:67%;" />
 
 #### 2.2.4 小结
 
