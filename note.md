@@ -74,7 +74,7 @@ a, a.item(), float(a), int(a)
 
 > [!IMPORTANT]
 >
-> `X.numpy()` 的作用是将一个 PyTorch `Tensor` 转换为 `numpy` 数组。然而，**转换是浅拷贝**，并不会改变原始数据在 `Tensor` 中的类型或类型的引用。**类型** 仍然会保持为 `torch.Tensor`，这意味着 `X` 依然是一个 `Tensor`，而 `X.numpy()` 是该张量的 `numpy` 视图。
+> `X.numpy()` 的作用是将一个 `PyTorch` `Tensor` 转换为 `numpy` 数组。然而，**转换是浅拷贝**，并不会改变原始数据在 `Tensor` 中的类型或类型的引用。**类型** 仍然会保持为 `torch.Tensor`，这意味着 `X` 依然是一个 `Tensor`，而 `X.numpy()` 是该张量的 `numpy` 视图。
 >
 > - **视图** 是原始数据的不同表现形式，但它与原始数据共享同一块内存。这意味着，对视图的修改会影响到原始数据，而对原始数据的修改也会影响到视图。
 >
@@ -189,7 +189,7 @@ df.head()
 df.tail()
 df.info()
 df.describe()
-df.shape
+df.shape 
 
 df.iloc[:,:]
 df.loc[:,["column1","column2"]]
@@ -219,5 +219,33 @@ X = torch.tensor(inputs.to_numpy(dtype=float))
 
 #### 2.2.4 小结
 
+- `pandas`软件包是Python中常用的数据分析工具中，`pandas`可以与张量兼容。
+- 用`pandas`处理缺失的数据时，我们可根据情况选择用插值法和删除法。
+
 #### 2.2.5 练习
 
+- 空值为`np.nan`
+
+创建包含更多行和列的原始数据集。
+
+1. 删除缺失值最多的列。
+
+```python
+df.drop(columns=df.isnull().sum().idxmax())
+- df.isnull()
+- df.sum()
+- df.idxmax()
+```
+
+<img src="pictures\image-20250422140052684.png" alt="image-20250422140052684" style="zoom:67%;" />
+
+2. 将预处理后的数据集转换为张量格式。
+
+```python
+df_tensored_1 = pd.get_dummies(df_missed_1, dummy_na=True)
+df_tensored_2 = torch.tensor(df_tensored_1.to_numpy(dtype=float))
+```
+
+<img src="pictures\image-20250422140515241.png" alt="image-20250422140515241" style="zoom: 50%;" />
+
+<img src="pictures\image-20250422140554969.png" alt="image-20250422140554969" style="zoom:50%;" />
