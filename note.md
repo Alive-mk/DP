@@ -231,7 +231,7 @@ X = torch.tensor(inputs.to_numpy(dtype=float))
 1. 删除缺失值最多的列。
 
 ```python
-df.drop(columns=df.isnull().sum().idxmax())
+df.drop(columns=[df.isnull().sum().idxmax()])
 - df.isnull()
 - df.sum()
 - df.idxmax()
@@ -249,3 +249,4 @@ df_tensored_2 = torch.tensor(df_tensored_1.to_numpy(dtype=float))
 <img src="pictures\image-20250422140515241.png" alt="image-20250422140515241" style="zoom: 50%;" />
 
 <img src="pictures\image-20250422140554969.png" alt="image-20250422140554969" style="zoom:50%;" />
+
