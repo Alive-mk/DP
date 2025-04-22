@@ -250,3 +250,5 @@ df_tensored_2 = torch.tensor(df_tensored_1.to_numpy(dtype=float))
 
 <img src="pictures\image-20250422140554969.png" alt="image-20250422140554969" style="zoom:50%;" />
 
+### 2.3 线性代数
+
